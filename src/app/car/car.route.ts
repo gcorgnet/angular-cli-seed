@@ -12,7 +12,7 @@ import { CarsListedGuard } from './guards/car-listing';
 
 const routes: Routes = [
   {
-    path: 'car',
+    path: '',
     redirectTo: '/car/overview',
     pathMatch: 'full'
   },
@@ -29,12 +29,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  exports: [
-  ],
+
   imports: [
     RouterModule.forChild(routes),
-    CarModule,
-    CommonModule
-  ], declarations: []
+    // CarModule,
+    // CommonModule
+  ],
+  exports: [
+    RouterModule
+  ],
 })
 export class CarRouteModule { }

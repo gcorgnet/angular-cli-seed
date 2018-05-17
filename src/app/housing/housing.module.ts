@@ -1,3 +1,5 @@
+import { HousingEffects } from './effects/housing';
+import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +22,8 @@ import { HousingRouteModule } from './housing.route';
     WidgetModule,
     UtilitiesModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // EffectsModule.run(HousingEffects)
   ],
   exports: [
     HouseListComponent,

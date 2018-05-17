@@ -27,6 +27,7 @@ export class ActionFactory {
   }
 
   static listHouses(list: House[]): Action {
+    console.log('ListHouse', list);
     return new ListHousesAction(list);
   }
 }

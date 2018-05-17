@@ -1,3 +1,6 @@
+import { CarRouteModule } from './car.route';
+import { CarEffects } from './effects/cars';
+import { EffectsModule } from '@ngrx/effects';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { WidgetModule } from 'arranbartish-angular-cli-widgets';
@@ -14,15 +17,21 @@ import { UtilitiesModule } from '../utilities/utilities.module';
 @NgModule({
   imports: [
     CommonModule,
+    CarRouteModule,
     WidgetModule,
-    UtilitiesModule
+    UtilitiesModule,
+    EffectsModule.run(CarEffects),
   ],
   exports: [
     CarListComponent,
     ListingComponent,
     SearchResultComponent
   ],
-  declarations: [CarListComponent, ListingComponent, SearchResultComponent, AddComponent],
+  declarations: [
+    CarListComponent,
+    ListingComponent,
+    SearchResultComponent,
+    AddComponent],
   providers: [
     CarService,
     CarsListedGuard,

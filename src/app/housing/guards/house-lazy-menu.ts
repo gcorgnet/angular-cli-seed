@@ -17,7 +17,8 @@ export class HousesLazyMenuGuard implements CanActivate {
 
   initializeMenu(): Observable<boolean> {
     this.housesStore.select(state => state.houses).subscribe((housingItems: House[]) => {
-      const newMenuItems = housingItems
+      console.log('HOUSING', housingItems);
+      const newMenuItems = housingItems ? housingItems
         .map(house => house.country) // Linq: .Select(house => house.country)
         .filter((value, index, array) => array.indexOf(value) === index) // Linq: .Distinct()
         .map(country => <TreeElement>{
@@ -25,7 +26,8 @@ export class HousesLazyMenuGuard implements CanActivate {
           targetUrl: '/housing/search?q=' + country,
           imageCssClass: 'glyphicon glyphicon-list'
         })
-        .sort((treeElmA, treeElmB) => treeElmA.title > treeElmB.title ? 1 : 0);
+        .sort((treeElmA, treeElmB) => treeElmA.title > treeElmB.title ? 1 : 0)
+        : [];
 
       const housingMenuTitle = 'Housing';
       const housingMenu = {

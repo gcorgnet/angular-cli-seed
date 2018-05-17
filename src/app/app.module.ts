@@ -22,7 +22,7 @@ import { AppNavigationComponent } from './navigation/navigation.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'car', loadChildren: './car/car.route#CarRouteModule' },
+  { path: 'car', loadChildren: './car/car.module#CarModule' },
   { path: 'housing', loadChildren: './housing/housing.module#HousingModule' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -35,19 +35,19 @@ const routes: Routes = [
     AppNavigationComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { enableTracing: true }),
+    RouterModule.forRoot(routes, { enableTracing: false }),
     ToastyModule.forRoot(),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule,
-    CarRouteModule,
+    // CarRouteModule,
     // HousingRouteModule,
     WidgetModule,
-    StoreModule.provideStore({ cars/*, houses,*/, treeElements }),
-    EffectsModule.run(CarEffects),
-    // EffectsModule.run(HousingEffects)
+    StoreModule.provideStore({ cars, houses, treeElements }),
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

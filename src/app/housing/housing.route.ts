@@ -8,13 +8,13 @@ import {HousesListedGuard} from './guards/house-listing';
 import { HousesLazyMenuGuard } from './guards/house-lazy-menu';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/housing/overview',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
+    redirectTo: '/housing/overview',
+    pathMatch: 'full'
+  },
+  {
+    path: 'overview',
     canActivate: [ HousesListedGuard, HousesLazyMenuGuard ],
     component: ListingComponent
   },
@@ -26,13 +26,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  exports: [
-    RouterModule
-  ],
+
   imports: [
     RouterModule.forChild(routes),
     // HousingModule,
     // CommonModule
-  ], declarations: []
+  ], //, declarations: []
+  exports: [
+    RouterModule
+  ]
 })
 export class HousingRouteModule { }
