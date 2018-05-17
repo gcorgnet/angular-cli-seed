@@ -9,6 +9,7 @@ import { CarAction, ActionFactory } from '../actions/cars';
 import { empty } from 'rxjs/observable/empty';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class CarEffects {

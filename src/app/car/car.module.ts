@@ -1,3 +1,5 @@
+import { cars } from './reducers/car.reducer';
+import { StoreModule } from '@ngrx/store';
 import { CarRouteModule } from './car.route';
 import { CarEffects } from './effects/cars';
 import { EffectsModule } from '@ngrx/effects';
@@ -18,6 +20,8 @@ import { UtilitiesModule } from '../utilities/utilities.module';
   imports: [
     CommonModule,
     CarRouteModule,
+    StoreModule.forFeature('cars', cars),
+    EffectsModule.forFeature([CarEffects]),
     WidgetModule,
     UtilitiesModule,
     // TODO

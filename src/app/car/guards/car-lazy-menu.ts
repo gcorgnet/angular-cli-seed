@@ -17,7 +17,7 @@ export class CarsLazyMenuGuard implements CanActivate {
 
   initializeMenu(): Observable<boolean> {
     this.carStore.select(state => state.cars).subscribe((carItems: Car[]) => {
-      const newMenuItems = carItems
+      const newMenuItems = carItems ? carItems
         .map(car => car.brand) // Linq: .Select(car => car.brand)
         .filter((value, index, array) => array.indexOf(value) === index) // Linq: .Distinct()
         .map(brand => <TreeElement> {
@@ -25,7 +25,7 @@ export class CarsLazyMenuGuard implements CanActivate {
           targetUrl: '/car/search?q=' + brand,
           imageCssClass: 'glyphicon glyphicon-list'
         })
-        .sort((treeElmA, treeElmB) => treeElmA.title > treeElmB.title ? 1 : 0);
+        .sort((treeElmA, treeElmB) => treeElmA.title > treeElmB.title ? 1 : 0) : [];
 
       const carMenuTitle = 'Car';
       const carMenu = {
