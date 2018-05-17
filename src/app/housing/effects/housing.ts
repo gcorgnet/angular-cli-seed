@@ -4,7 +4,10 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/skip';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 import { House } from '../domain/housing';
 import { HouseService } from '../service/house.service';
 import { ActionFactory, HousingAction } from '../actions/housing';
@@ -48,8 +51,10 @@ export class HousingEffects {
   }
 
   private performAddHouse(newHouse: House): Observable<Action> {
+    console.log('PERFORMING');
     return this.houseService.addHouse(newHouse)
       .map(result => {
+        console.log('SUCCESS');
         this.toaster.success('The new house has successfully been added!');
         return result;
       })

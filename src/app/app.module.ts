@@ -45,7 +45,10 @@ const routes: Routes = [
     // CarRouteModule,
     // HousingRouteModule,
     WidgetModule,
-    StoreModule.provideStore({ cars, houses, treeElements }),
+    StoreModule.forRoot({treeElements}),
+    EffectsModule.forRoot([]),
+    // TODO
+    // StoreModule.provideStore({ cars, houses, treeElements }),
 
 
   ],

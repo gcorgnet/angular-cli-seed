@@ -3,6 +3,7 @@ import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 import { House } from '../domain/housing';
 
 @Injectable()
@@ -24,13 +25,14 @@ export class /*Fake*/HouseService {
   }
 
   addHouse(newHouse: House): Observable<House> {
+    console.log('ADDING House');
     this.dataSet = [...this.dataSet, newHouse];
+    debugger;
     return of(newHouse); // TODO: implement actual service call!
   }
 
   private getFromUrl(url: string): Observable<House[]> {
-    return this.http.get(url)
-      .map(this.extractData);
+    return this.http.get(url).map(this.extractData);
   }
 
   private extractData(res: Response) {

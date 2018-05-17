@@ -1,3 +1,5 @@
+import { houses } from './reducers/houses.reducer';
+import { StoreModule } from '@ngrx/store';
 import { HousingEffects } from './effects/housing';
 import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
@@ -19,11 +21,13 @@ import { HousingRouteModule } from './housing.route';
   imports: [
     CommonModule,
     HousingRouteModule,
+    StoreModule.forFeature('houses', houses),
+    EffectsModule.forFeature([HousingEffects]),
     WidgetModule,
     UtilitiesModule,
     FormsModule,
     ReactiveFormsModule,
-    // EffectsModule.run(HousingEffects)
+
   ],
   exports: [
     HouseListComponent,

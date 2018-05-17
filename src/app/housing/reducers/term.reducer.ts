@@ -1,3 +1,4 @@
+import { SearchAction } from './../../car/actions/cars';
 import {Action} from '@ngrx/store';
 import {HousingAction} from '../actions/housing';
 
@@ -9,7 +10,7 @@ export const term = (state: string = '', action: Action ) => {
 
   switch (action.type) {
     case HousingAction.SEARCH:
-      return action.payload;
+      return (action as SearchAction).payload;
     default:
       return state;
   }

@@ -20,7 +20,8 @@ import { UtilitiesModule } from '../utilities/utilities.module';
     CarRouteModule,
     WidgetModule,
     UtilitiesModule,
-    EffectsModule.run(CarEffects),
+    // TODO
+    // EffectsModule.run(CarEffects),
   ],
   exports: [
     CarListComponent,
