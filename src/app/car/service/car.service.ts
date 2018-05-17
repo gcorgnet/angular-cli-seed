@@ -10,6 +10,7 @@ export class CarService {
   }
 
   findCars(term: string): Observable<Car[]> {
+    console.log('BLA');
     return this.getFromUrl('/assets/mock/search/cars.json?q=' + term);
   }
 

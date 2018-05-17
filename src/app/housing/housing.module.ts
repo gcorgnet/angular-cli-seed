@@ -11,10 +11,12 @@ import { SearchResultComponent } from './containers/search-result/search-result.
 import { HousesListedGuard } from './guards/house-listing';
 import { HousesLazyMenuGuard } from './guards/house-lazy-menu';
 import { HouseService } from './service/house.service';
+import { HousingRouteModule } from './housing.route';
 
 @NgModule({
   imports: [
     CommonModule,
+    HousingRouteModule,
     WidgetModule,
     UtilitiesModule,
     FormsModule,
@@ -26,6 +28,7 @@ import { HouseService } from './service/house.service';
     ListingComponent,
     SearchResultComponent
   ],
+
   declarations: [
     HouseListComponent,
     HouseEditComponent,
